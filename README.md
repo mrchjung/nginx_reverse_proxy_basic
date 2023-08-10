@@ -4,11 +4,19 @@ basic form of reverse proxy using nginx, on Docker
 
 load balancing option
 
-# 참조 : http://nginx.org/en/docs/stream/ngx_stream_upstream_module.html
+참조 : http://nginx.org/en/docs/stream/ngx_stream_upstream_module.html
 
 ip_hash - ip로 분배한다. 만약 A라는 ip가 server1에 접속했으면 이후에도 server1에 계속 접속하게 되며, 한번 접속한 ip는 계속 같은 서버를 사용한다.
+
 least_conn - 가중치를 고려하면서 연결된 접속자가 가장 적은 서버로 분배
+
 least_time - 연결된 접속자가 가장 적으면서 + 평균 응답시간이 가장 적은 쪽으로 분배
+
+<img width="80%" src="images/basic.jpg"/>
+
+위와 같이 container 3 개를 설정해 실습했다.
+
+<img width="80%" src="images/basic1.jpg"/>
 
 basic 1
 
@@ -29,6 +37,8 @@ basic 1
     - 정리 : 외부로 열린 포트임에도 불구하고 bridge network 정보에는 포함이 안되어있었다.
 
   - 외부 ip 였다면, 프록시 서버(80,1111,9999), tomcat서버(10001,10002) 의 포트가 모두 열리는 상황이므로 적합하지 않음.
+
+<img width="80%" src="images/basic2.jpg"/>
 
 basic 2
 
